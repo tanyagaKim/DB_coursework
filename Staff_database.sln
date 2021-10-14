@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Staff_database", "Staff_database\Staff_database.csproj", "{61415200-2786-4CE9-BB6D-80888B88C71D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstallerStaff", "InstallerStaff\InstallerStaff.vdproj", "{B9DF3416-3052-4581-9C3D-C28D65B499F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{61415200-2786-4CE9-BB6D-80888B88C71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61415200-2786-4CE9-BB6D-80888B88C71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61415200-2786-4CE9-BB6D-80888B88C71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61415200-2786-4CE9-BB6D-80888B88C71D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9DF3416-3052-4581-9C3D-C28D65B499F1}.Debug|Any CPU.ActiveCfg = Debug
+		{B9DF3416-3052-4581-9C3D-C28D65B499F1}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BF57BB5-25CD-4691-BC7C-47DE1031684C}
+	EndGlobalSection
+EndGlobal
