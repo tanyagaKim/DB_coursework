@@ -13,25 +13,24 @@ namespace Staff_database
         {
             InitializeComponent();
             this.connection = connection;
+            DataSetNum tableNum = new DataSetNum(20, 8);
+        }
+
+        public SqlDataAdapter selectCommand(string stringCommand)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+
+            SqlCommand command = new SqlCommand(stringCommand, connection);
+
+            adapter.SelectCommand = command;
+
+            return adapter;
         }
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.connection.Open();
-            }
-            catch
-            {
-                MessageBox.Show("Сonnectoin open error");
-                return;
-            }
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM [personnel_accounting].[dbo].[Fired_card]", connection);
-
-            adapter.SelectCommand = command;
+            string commandString = "SELECT * FROM [personnel_accounting].[dbo].[Fired_card]";
+            SqlDataAdapter adapter = selectCommand(commandString);
 
             try
             {
@@ -44,7 +43,7 @@ namespace Staff_database
                 return;
             }
 
-            connection.Close();
+            //connection.Close();
 
             PersonalCardForm psC = new PersonalCardForm(connection);
             psC.TopLevel = false;
@@ -65,11 +64,9 @@ namespace Staff_database
                 return;
             }
 
-            SqlDataAdapter adapter = new SqlDataAdapter();
 
-            SqlCommand command = new SqlCommand("SELECT * FROM [personnel_accounting].[dbo].[users]", connection);
-
-            adapter.SelectCommand = command;
+            string commandString = "SELECT * FROM [personnel_accounting].[dbo].[users]";
+            SqlDataAdapter adapter = selectCommand(commandString);
 
             try
             {

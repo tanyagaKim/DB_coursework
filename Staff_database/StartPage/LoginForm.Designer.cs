@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.loginBox = new System.Windows.Forms.TextBox();
-            this.buttonLogin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.passwordBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.kryptonPanel2 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.AuthoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.passwordBox = new System.Windows.Forms.TextBox();
+            this.buttonLogin = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -47,9 +47,9 @@
             // 
             // kryptonPanel1
             // 
-            this.kryptonPanel1.Controls.Add(this.loginBox);
             this.kryptonPanel1.Controls.Add(this.buttonLogin);
             this.kryptonPanel1.Controls.Add(this.passwordBox);
+            this.kryptonPanel1.Controls.Add(this.loginBox);
             this.kryptonPanel1.Controls.Add(this.pictureBox2);
             this.kryptonPanel1.Controls.Add(this.pictureBox1);
             this.kryptonPanel1.Controls.Add(this.kryptonPanel2);
@@ -68,36 +68,6 @@
             this.loginBox.Name = "loginBox";
             this.loginBox.Size = new System.Drawing.Size(241, 26);
             this.loginBox.TabIndex = 6;
-            // 
-            // buttonLogin
-            // 
-            this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonLogin.Location = new System.Drawing.Point(167, 219);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.Size = new System.Drawing.Size(91, 41);
-            this.buttonLogin.StateCommon.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StateNormal.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StatePressed.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StatePressed.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StateTracking.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.StateTracking.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonLogin.TabIndex = 5;
-            this.buttonLogin.Values.Text = "Войти";
-            this.buttonLogin.Click += new System.EventHandler(this.kryptonButton1_Click);
-            // 
-            // passwordBox
-            // 
-            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passwordBox.Location = new System.Drawing.Point(123, 165);
-            this.passwordBox.Name = "passwordBox";
-            this.passwordBox.Size = new System.Drawing.Size(241, 26);
-            this.passwordBox.TabIndex = 4;
-            this.passwordBox.UseSystemPasswordChar = true;
             // 
             // pictureBox2
             // 
@@ -141,6 +111,36 @@
             this.AuthoLabel.TabIndex = 0;
             this.AuthoLabel.Values.Text = "Авторизация";
             // 
+            // passwordBox
+            // 
+            this.passwordBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordBox.Location = new System.Drawing.Point(123, 162);
+            this.passwordBox.Name = "passwordBox";
+            this.passwordBox.Size = new System.Drawing.Size(241, 26);
+            this.passwordBox.TabIndex = 7;
+            this.passwordBox.UseSystemPasswordChar = true;
+            // 
+            // buttonLogin
+            // 
+            this.buttonLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonLogin.Location = new System.Drawing.Point(172, 214);
+            this.buttonLogin.Name = "buttonLogin";
+            this.buttonLogin.OverrideDefault.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.OverrideDefault.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.OverrideFocus.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.OverrideFocus.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.Size = new System.Drawing.Size(91, 41);
+            this.buttonLogin.StateCommon.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StateNormal.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StateNormal.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StatePressed.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StatePressed.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StateTracking.Content.LongText.Font = new System.Drawing.Font("MS Reference Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.StateTracking.Content.ShortText.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonLogin.TabIndex = 8;
+            this.buttonLogin.Values.Text = "Войти";
+            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            // 
             // LoginForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
@@ -171,8 +171,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel AuthoLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.TextBox passwordBox;
         private ComponentFactory.Krypton.Toolkit.KryptonButton buttonLogin;
-        private System.Windows.Forms.TextBox loginBox;
     }
 }
