@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Xml;
 
@@ -19,8 +18,8 @@ namespace Staff_database
 
             XmlTextReader reader = null;
 
-            /*try
-            {*/
+            try
+            {
                 reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/config.xml");
 
                 reader.MoveToContent();
@@ -29,18 +28,18 @@ namespace Staff_database
                 pass = reader.GetAttribute("password");
 
                 connectionString = "User Id=" + name + ";Password=" + pass + ";Server=" + server;
-            /*}
+            }
 
             catch
             {
-                MessageBox.Show("Config file open error");
+                throw new Exception("Config file open error");
             }
 
             finally
-            {*/
+            {
                 if (reader != null)
                     reader.Close();
-            //}
+            }
 
             return connectionString;
         }
@@ -48,6 +47,8 @@ namespace Staff_database
         public String getSalt(SqlConnection connection, String login)
         {
             String salt = string.Empty;
+
+            if (login is null) return salt;
 
             DataTable table = new DataTable();
 
@@ -59,20 +60,16 @@ namespace Staff_database
             adapter.SelectCommand = command;
             command.Dispose();
 
-            /*try
-            {*/
+            try
+            {
                 adapter.Fill(table);
-            /*}
+            }
             catch
             {
-                MessageBox.Show("Error access to users_table");
+                throw new Exception("Error access to users table");
             }
-            */
-            if (table.Rows.Count < 1)
-            {
-                MessageBox.Show("Error entry! Try again");
-            }
-            else
+            
+            if (table.Rows.Count >= 1)
             {
                 salt = table.Rows[0]["Salt"].ToString();
             }
@@ -82,6 +79,8 @@ namespace Staff_database
 
         private String getHashed(String str_salt, String password)
         {
+            if (str_salt is null || password is null) return string.Empty;
+
             byte[] salt = Convert.FromBase64String(str_salt);
 
             // derive a 256-bit subkey (use HMACSHA256 with 100,000 iterations)
@@ -97,6 +96,8 @@ namespace Staff_database
 
         private bool checkHash(SqlConnection connection, String login, String hashed)
         {
+            if (login is null || hashed is null) return false;
+
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
 
@@ -113,9 +114,9 @@ namespace Staff_database
 
             catch
             {
-                MessageBox.Show("Error access to users_table");
+                throw new Exception("Error access to users table");
             }
-
+            
             return table.Rows.Count > 0;
         }
 
@@ -132,18 +133,20 @@ namespace Staff_database
         {
             bool flag = false;
 
-            SqlConnection connection =  new SqlConnection(connectionString);
+            SqlConnection connection = null;
 
-            /*try
-            {*/
+            try
+            {
+                connection = new SqlConnection(connectionString);
                 connection.Open();
-            /*}
+            }
             catch
             {
-                MessageBox.Show("Сonnectoin open error");
-            }*/
+                throw new Exception("Сonnectoin open error");
+            }
             
             flag = checkPerson(connection, login, password);
+
             connection.Close();
             connection.Dispose();
 
@@ -168,24 +171,23 @@ namespace Staff_database
 
             XmlTextReader reader = null;
             
-            /*try
-            {*/
-                reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/config.xml");
-                
+            try
+            {
+                reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/config.xml");                
                 reader.MoveToContent();
                 server = reader.GetAttribute("server");
-            /*}
+            }
 
             catch
             {
-                MessageBox.Show("Config file open error");
+                throw new Exception("Config file open error");
             }
 
             finally
-            {*/
+            {
                 if (reader != null)
                     reader.Close();
-            //}
+            }
             
             return server;
         }

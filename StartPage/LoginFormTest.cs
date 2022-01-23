@@ -23,8 +23,6 @@ namespace Tests
             licenceChecker = null;
         }
 
-        //
-        [Test]
 
     }
 }

@@ -10,9 +10,21 @@ namespace Staff_database
         public LoginForm()
         {
             LicenceChecker checker = new LicenceChecker();
-            if (checker.checkProcess() == false) Environment.Exit(-1);
+            try
+            {
+                if (checker.checkProcess() == false)
+                {
+                    MessageBox.Show("Wrong licence");
+                    Environment.Exit(-1);
+                }
 
-            InitializeComponent();
+                InitializeComponent();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Environment.Exit(-1);
+            }
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -22,21 +34,28 @@ namespace Staff_database
 
             Authorization checkLogin = new Authorization();
 
-            if (checkLogin.loginDB(login, password) == true)
+            try
             {
-                this.Hide();
+                if (checkLogin.loginDB(login, password) == true)
+                {
+                    this.Hide();
 
-                string server = checkLogin.getServer();
+                    string server = checkLogin.getServer();
 
-                String newConnectionString = "user Id=" + login + ";password=" + password + ";server=" + server;
+                    String newConnectionString = "user Id=" + login + ";password=" + password + ";server=" + server;
 
-                SqlConnection connection = new SqlConnection(newConnectionString);
-                MainForm mainForm = new MainForm(connection);
-                mainForm.Show();
+                    SqlConnection connection = new SqlConnection(newConnectionString);
+                    MainForm mainForm = new MainForm(connection);
+                    mainForm.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong login or password");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Error entry! Try again");
+                MessageBox.Show(ex.Message);
             }
         }
     }
