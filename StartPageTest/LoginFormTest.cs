@@ -7,7 +7,7 @@ using Moq;
 namespace Tests
 {
     public class LoginFormTest
-    {
+    {/*
         Mock<Staff_database.LoginForm> mockLoginForm;
         Staff_database.LicenceChecker licenceChecker;
 
@@ -23,6 +23,6 @@ namespace Tests
             licenceChecker = null;
         }
 
-
+        */
     }
 }

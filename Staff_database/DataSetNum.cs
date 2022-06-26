@@ -8,13 +8,13 @@ namespace Staff_database
 {
     public class DataSetNum
     {
-        public int row { get; set; }
-        public int column { get; set; }
+        private int rows = 0;
+        private int columns = 0;
 
-        public DataSetNum(int row, int column)
+        public DataSetNum(int rows, int columns)
         {
-            this.row = row;
-            this.column = column;
+            this.rows = rows;
+            this.columns = columns;
         }
     }
 }

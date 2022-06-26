@@ -33,7 +33,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.AccoutingLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.personalCardsButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton3 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.settingsFormButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.base_content = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.content = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -41,8 +41,8 @@
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel3 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonButton2 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.accreditationFormButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.firedsFormButton = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel2)).BeginInit();
             this.kryptonPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -100,20 +100,20 @@
             this.personalCardsButton.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.personalCardsButton.TabIndex = 3;
             this.personalCardsButton.Values.Text = "Личные карточки";
-            this.personalCardsButton.Click += new System.EventHandler(this.kryptonButton1_Click);
+            this.personalCardsButton.Click += new System.EventHandler(this.personalCardsButton_Click);
             // 
-            // kryptonButton3
+            // settingsFormButton
             // 
-            this.kryptonButton3.AutoSize = true;
-            this.kryptonButton3.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
-            this.kryptonButton3.Location = new System.Drawing.Point(0, 162);
-            this.kryptonButton3.Name = "kryptonButton3";
-            this.kryptonButton3.Size = new System.Drawing.Size(174, 30);
-            this.kryptonButton3.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.kryptonButton3.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton3.TabIndex = 5;
-            this.kryptonButton3.Values.Text = "Настройки";
-            this.kryptonButton3.Click += new System.EventHandler(this.kryptonButton3_Click);
+            this.settingsFormButton.AutoSize = true;
+            this.settingsFormButton.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
+            this.settingsFormButton.Location = new System.Drawing.Point(0, 162);
+            this.settingsFormButton.Name = "settingsFormButton";
+            this.settingsFormButton.Size = new System.Drawing.Size(174, 30);
+            this.settingsFormButton.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.settingsFormButton.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.settingsFormButton.TabIndex = 5;
+            this.settingsFormButton.Values.Text = "Настройки";
+            this.settingsFormButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // base_content
             // 
@@ -185,9 +185,9 @@
             // 
             // kryptonPanel3
             // 
-            this.kryptonPanel3.Controls.Add(this.kryptonButton2);
-            this.kryptonPanel3.Controls.Add(this.kryptonButton1);
-            this.kryptonPanel3.Controls.Add(this.kryptonButton3);
+            this.kryptonPanel3.Controls.Add(this.accreditationFormButton);
+            this.kryptonPanel3.Controls.Add(this.firedsFormButton);
+            this.kryptonPanel3.Controls.Add(this.settingsFormButton);
             this.kryptonPanel3.Controls.Add(this.personalCardsButton);
             this.kryptonPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.kryptonPanel3.Location = new System.Drawing.Point(0, 69);
@@ -195,33 +195,33 @@
             this.kryptonPanel3.Size = new System.Drawing.Size(177, 460);
             this.kryptonPanel3.TabIndex = 6;
             // 
-            // kryptonButton2
+            // accreditationFormButton
             // 
-            this.kryptonButton2.AutoSize = true;
-            this.kryptonButton2.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
-            this.kryptonButton2.Location = new System.Drawing.Point(1, 124);
-            this.kryptonButton2.Name = "kryptonButton2";
-            this.kryptonButton2.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonButton2.Size = new System.Drawing.Size(173, 32);
-            this.kryptonButton2.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.kryptonButton2.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton2.TabIndex = 7;
-            this.kryptonButton2.Values.Text = "Аккредитация медиков";
-            this.kryptonButton2.Click += new System.EventHandler(this.kryptonButton2_Click);
+            this.accreditationFormButton.AutoSize = true;
+            this.accreditationFormButton.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
+            this.accreditationFormButton.Location = new System.Drawing.Point(1, 124);
+            this.accreditationFormButton.Name = "accreditationFormButton";
+            this.accreditationFormButton.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.accreditationFormButton.Size = new System.Drawing.Size(173, 32);
+            this.accreditationFormButton.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.accreditationFormButton.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.accreditationFormButton.TabIndex = 7;
+            this.accreditationFormButton.Values.Text = "Аккредитация медиков";
+            this.accreditationFormButton.Click += new System.EventHandler(this.accreditationButton_Click);
             // 
-            // kryptonButton1
+            // firedsFormButton
             // 
-            this.kryptonButton1.AutoSize = true;
-            this.kryptonButton1.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
-            this.kryptonButton1.Location = new System.Drawing.Point(1, 86);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
-            this.kryptonButton1.Size = new System.Drawing.Size(174, 32);
-            this.kryptonButton1.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.TabIndex = 6;
-            this.kryptonButton1.Values.Text = "Записи об  уволенных";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click_1);
+            this.firedsFormButton.AutoSize = true;
+            this.firedsFormButton.ButtonStyle = ComponentFactory.Krypton.Toolkit.ButtonStyle.Gallery;
+            this.firedsFormButton.Location = new System.Drawing.Point(1, 86);
+            this.firedsFormButton.Name = "firedsFormButton";
+            this.firedsFormButton.PaletteMode = ComponentFactory.Krypton.Toolkit.PaletteMode.Office2010Blue;
+            this.firedsFormButton.Size = new System.Drawing.Size(174, 32);
+            this.firedsFormButton.StateCommon.Content.LongText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.firedsFormButton.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Magneto", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.firedsFormButton.TabIndex = 6;
+            this.firedsFormButton.Values.Text = "Записи об  уволенных";
+            this.firedsFormButton.Click += new System.EventHandler(this.firedFormButton_Click);
             // 
             // MainForm
             // 
@@ -257,7 +257,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel2;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel AccoutingLabel;
         private ComponentFactory.Krypton.Toolkit.KryptonButton personalCardsButton;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton3;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton settingsFormButton;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel base_content;
         private System.Windows.Forms.PictureBox pictureBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel3;
@@ -266,7 +266,7 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel3;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel6;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton2;
-        private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton accreditationFormButton;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton firedsFormButton;
     }
 }

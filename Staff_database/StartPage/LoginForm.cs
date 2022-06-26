@@ -9,7 +9,10 @@ namespace Staff_database
         
         public LoginForm()
         {
-            LicenceChecker checker = new LicenceChecker();
+            XML_Reader reader = new XML_Reader();
+            WMI_Processor wmiProcessor = new WMI_Processor();
+
+            LicenceChecker checker = new LicenceChecker(reader, wmiProcessor);
             try
             {
                 if (checker.checkProcess() == false)

@@ -7,43 +7,52 @@ namespace Staff_database
 {
     public partial class MainForm : Form
     {
-        SqlConnection connection = null;
+        private SqlConnection connection = null;
+        private SelectTable selector = null;
 
         public MainForm(SqlConnection connection)
         {
-            InitializeComponent();
-            this.connection = connection;
-            DataSetNum tableNum = new DataSetNum(20, 8);
-        }
-
-        public SqlDataAdapter selectCommand(string stringCommand)
-        {
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            SqlCommand command = new SqlCommand(stringCommand, connection);
-
-            adapter.SelectCommand = command;
-
-            return adapter;
-        }
-
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            string commandString = "SELECT * FROM [personnel_accounting].[dbo].[Fired_card]";
-            SqlDataAdapter adapter = selectCommand(commandString);
-
             try
             {
+                this.connection = connection;
+                this.connection.Open();
+            }
+            catch
+            {
+                MessageBox.Show("Сonnectoin open error");
+                return;
+            }
+            this.connection.Close();
+            selector = new SelectTable();
+
+            InitializeComponent();
+        }
+
+        public void checkAccess(string commandString)
+        {
+            try
+            {
+                SqlDataAdapter adapter = selector.selectCommand(commandString, connection);
                 adapter.Fill(new DataTable());
             }
             catch
             {
-                MessageBox.Show("Error access");
+                throw new Exception("Error access");
+            }
+        }
+        
+        private void personalCardsButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                checkAccess("SELECT * FROM [personnel_accounting].[dbo].[Personal_card]");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 connection.Close();
                 return;
             }
-
-            //connection.Close();
 
             PersonalCardForm psC = new PersonalCardForm(connection);
             psC.TopLevel = false;
@@ -51,35 +60,19 @@ namespace Staff_database
             content.Controls.Add(psC);
             psC.Show();
         }
-
-        private void kryptonButton3_Click(object sender, EventArgs e)
+        
+        private void settingsButton_Click(object sender, EventArgs e)
         {
             try
             {
-                this.connection.Open();
+                checkAccess("SELECT * FROM [personnel_accounting].[dbo].[users]");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сonnectoin open error");
-                return;
-            }
-
-
-            string commandString = "SELECT * FROM [personnel_accounting].[dbo].[users]";
-            SqlDataAdapter adapter = selectCommand(commandString);
-
-            try
-            {
-                adapter.Fill(new DataTable());
-            }
-            catch
-            {
-                MessageBox.Show("Error access");
+                MessageBox.Show(ex.Message);
                 connection.Close();
                 return;
             }
-
-            connection.Close();
 
             SettingsForm settings = new SettingsForm(connection);
             settings.TopLevel = false;
@@ -87,42 +80,19 @@ namespace Staff_database
             content.Controls.Add(settings);
             settings.Show();
         }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void kryptonButton1_Click_1(object sender, EventArgs e)
+        
+        private void firedFormButton_Click(object sender, EventArgs e)
         {
             try
             {
-                this.connection.Open();
+                checkAccess("SELECT * FROM [personnel_accounting].[dbo].[Fired_card]");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сonnectoin open error");
-                return;
-            }
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM [personnel_accounting].[dbo].[Fired_card]", connection);
-
-            adapter.SelectCommand = command;
-
-            try
-            {
-                adapter.Fill(new DataTable());
-            }
-            catch
-            {
-                MessageBox.Show("Error access");
+                MessageBox.Show(ex.Message);
                 connection.Close();
                 return;
             }
-
-            connection.Close();
 
             FiredsForm reports = new FiredsForm(connection);
             reports.TopLevel = false;
@@ -130,43 +100,30 @@ namespace Staff_database
             content.Controls.Add(reports);
             reports.Show();
         }
-
-        private void kryptonButton2_Click(object sender, EventArgs e)
+        
+        private void accreditationButton_Click(object sender, EventArgs e)
         {
             try
             {
-                this.connection.Open();
+                checkAccess("SELECT * FROM [personnel_accounting].[dbo].[Accreditation]");
             }
-            catch
+            catch (Exception ex)
             {
-                MessageBox.Show("Сonnectoin open error");
-                return;
-            }
-
-            SqlDataAdapter adapter = new SqlDataAdapter();
-
-            SqlCommand command = new SqlCommand("SELECT * FROM [personnel_accounting].[dbo].[Accreditation]", connection);
-
-            adapter.SelectCommand = command;
-
-            try
-            {
-                adapter.Fill(new DataTable());
-            }
-            catch
-            {
-                MessageBox.Show("Error access");
+                MessageBox.Show(ex.Message);
                 connection.Close();
                 return;
             }
-
-            connection.Close();
-
+            
             AccreditationForm reports = new AccreditationForm(connection);
             reports.TopLevel = false;
             content.Controls.Clear();
             content.Controls.Add(reports);
             reports.Show();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

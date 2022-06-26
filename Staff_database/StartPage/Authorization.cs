@@ -169,24 +169,17 @@ namespace Staff_database
         {
             String server = string.Empty;
 
-            XmlTextReader reader = null;
+            string filename = @"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/config.xml";
             
             try
             {
-                reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/config.xml");                
-                reader.MoveToContent();
-                server = reader.GetAttribute("server");
+                XML_Reader reader = new XML_Reader();
+                reader.readAttribute(filename, "server");
             }
 
-            catch
+            catch (Exception ex)
             {
-                throw new Exception("Config file open error");
-            }
-
-            finally
-            {
-                if (reader != null)
-                    reader.Close();
+                throw new Exception("File: " + filename + ex.Message);
             }
             
             return server;

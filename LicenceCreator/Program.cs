@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Management;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace LicenceCreator
 {
@@ -6,16 +11,20 @@ namespace LicenceCreator
     {
         static void Main(string[] args)
         {
-            string filename = "licence.xml";
+
+            //string filename = @"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/licence.xml";
+            string filename = @"licence.xml";
 
             XML_WR xml_mr = new XML_WR();
             xml_mr.createXML(filename, "licence");
 
             LicenceCreator creator = new LicenceCreator();
-            string processorID = creator.getProcessId();
-            string keyValue = creator.getHashed("", processorID);
 
-            xml_mr.AppendAttribute(filename, "licenceId", "key", "123456");
+            string salt = creator.generateSalt();
+            string licence = creator.generateLicence(salt, creator.getProcessId());
+
+            xml_mr.AppendAttribute(filename, "saltId", "salt", salt);
+            xml_mr.AppendAttribute(filename, "licenceId", "licence", licence);
         }
     }
 }

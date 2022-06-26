@@ -81,6 +81,9 @@
     <Reference Include="Moq, Version=4.16.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.16.1\lib\net45\Moq.dll</HintPath>
     </Reference>
+    <Reference Include="Moq.AutoMock, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.AutoMock.3.2.0\lib\net461\Moq.AutoMock.dll</HintPath>
+    </Reference>
     <Reference Include="OfficeOpenXml.Core.ExcelPackage, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OfficeOpenXml.Core.ExcelPackage.1.0.0\lib\net46\OfficeOpenXml.Core.ExcelPackage.dll</HintPath>
     </Reference>
@@ -120,8 +123,12 @@
     <Compile Include="AccreditationForm.Designer.cs">
       <DependentUpon>AccreditationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSetNum.cs" />
+    <Compile Include="SelectTable.cs" />
     <Compile Include="StartPage\Authorization.cs" />
-    <Compile Include="StartPage\DataSet.cs" />
+    <Compile Include="StartPage\IAuthorization.cs" />
+    <Compile Include="StartPage\IReader.cs" />
+    <Compile Include="StartPage\IWMI.cs" />
     <Compile Include="StartPage\LicenceChecker.cs" />
     <Compile Include="StartPage\LoginForm.cs">
       <SubType>Form</SubType>
@@ -160,6 +167,8 @@
     <Compile Include="SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StartPage\WMI_Processor.cs" />
+    <Compile Include="StartPage\XML-Reader.cs" />
     <EmbeddedResource Include="AccreditationForm.resx">
       <DependentUpon>AccreditationForm.cs</DependentUpon>
     </EmbeddedResource>

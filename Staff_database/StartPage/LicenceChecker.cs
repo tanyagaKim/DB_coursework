@@ -1,12 +1,19 @@
 ﻿using System;
-using System.Xml;
-using System.Management;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace Staff_database
 {
     public class LicenceChecker
     {
+        private readonly IReader _reader;
+        private readonly IWMI _wmi;
+
+        public LicenceChecker(IReader reader, IWMI wmi)
+        {
+            _reader = reader;
+            _wmi = wmi;
+        }
+
         private string getHashed(string str_salt, string password)
         {
             byte[] salt = Convert.FromBase64String(str_salt);
@@ -25,28 +32,16 @@ namespace Staff_database
         private string getSalt()
         {
             string salt = string.Empty;
-
-            XmlTextReader reader = null;
+            string filename = @"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/licence.xml";
 
             try
             {
-                //reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/licence.xml");
-                reader = new XmlTextReader(@"licence.xml");
-
-                reader.ReadToFollowing("saltId");
-                reader.MoveToFirstAttribute();
-                salt = reader.Value;
+                salt = _reader.readAttribute(filename, "salt", "saltId");
             }
 
             catch
             {
                 throw new Exception("Licence open error");
-            }
-
-            finally
-            {
-                if (reader != null)
-                    reader.Close();
             }
 
             return salt;
@@ -55,17 +50,11 @@ namespace Staff_database
         private string getLicenceId()
         {
             string licenceId = string.Empty;
-
-            XmlTextReader reader = null;
+            string filename = @"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/licence.xml";
 
             try
             {
-                //reader = new XmlTextReader(@"C:/Users/Татьяна/Desktop/Институт/бд курсач/Staff_database/Staff_database/src/licence.xml");
-                reader = new XmlTextReader(@"licence.xml");
-
-                reader.ReadToFollowing("licenceId");
-                reader.MoveToFirstAttribute();
-                licenceId = reader.Value;
+                licenceId = _reader.readAttribute(filename, "licence", "licenceId"); 
             }
 
             catch
@@ -73,30 +62,12 @@ namespace Staff_database
                 throw new Exception("Licence open error");
             }
 
-            finally
-            {
-                if (reader != null)
-                    reader.Close();
-            }
-
             return licenceId;
         }
 
         private string getProcessId()
         {
-            string cpuInfo = string.Empty;
-            
-            ManagementClass managClass = new ManagementClass("win32_processor");
-            ManagementObjectCollection managCollec = managClass.GetInstances();
-
-            foreach (ManagementObject managObj in managCollec)
-            {
-                cpuInfo = managObj.Properties["processorID"].Value.ToString();
-                break;
-            }
-
-            return cpuInfo;
-            
+            return _wmi.getProcessId();            
         }
 
         public bool checkProcess()
